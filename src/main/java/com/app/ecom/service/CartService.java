@@ -83,4 +83,11 @@ public class CartService {
 				.orElseGet(List::of);
 	}
 
+	public void clearCart(String userId) {
+		
+		userRepository.findById(Long.valueOf(userId)).ifPresent(
+		cartItemRepository::deleteByUser
+				);
+	}
+
 }
